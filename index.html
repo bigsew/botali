@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 30px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
+      color: #38bdf8;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .video-card {
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: #000;
+    }
+
+    .video-info {
+      padding: 15px;
+    }
+
+    .video-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .video-path {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>የቪዲዮ ማስቀመጫ</h1>
+
+    <div class="video-grid">
+      <!-- ቪዲዮ 1 -->
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="video/welcome.mp4" type="video/mp4">
+          ቪዲዮውን መክፈት አልተቻለም።
+        </video>
+        <div class="video-info">
+          <div class="video-title">Welcome Video</div>
+          <div class="video-path">video/welcome.mp4</div>
+        </div>
+      </div>
+
+      <!-- ቪዲዮ 2 -->
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="video/video2.mp4" type="video/mp4">
+          ቪዲዮውን መክፈት አልተቻለም።
+        </video>
+        <div class="video-info">
+          <div class="video-title">Video Two</div>
+          <div class="video-path">video/video2.mp4</div>
+        </div>
+      </div>
+
+      <!-- ቪዲዮ 3 -->
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="video/video3.mp4" type="video/mp4">
+          ቪዲዮውን መክፈት አልተቻለም።
+        </video>
+        <div class="video-info">
+          <div class="video-title">Video Three</div>
+          <div class="video-path">video/video3.mp4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // አንድ ቪዲዮ ሲጫወት ሌላኛው በራሱ pause እንዲያደርግ
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      video.addEventListener('play', () => {
+        videos.forEach(otherVideo => {
+          if (otherVideo !== video) {
+            otherVideo.pause();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
